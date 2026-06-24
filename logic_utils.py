@@ -30,28 +30,15 @@ def parse_guess(raw: str, low: int | None = None, high: int | None = None):
 
     return True, value, None
 
-
+# FIX: Refactored check_guess() into logic_utils.py and corrected the hint direction after testing guesses against the secret number.
 def check_guess(guess, secret):
-    """
-    Compare guess to secret and return (outcome, message).
-
-    outcome examples: "Win", "Too High", "Too Low"
-    """
     if guess == secret:
         return "Win", "🎉 Correct!"
 
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+    if guess > secret:
+        return "Too High", "📉 Go LOWER!"
+
+    return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
