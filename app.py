@@ -76,7 +76,6 @@ st.info(
     f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
-)
 
 with st.expander("Developer Debug Info"):
     st.write("Secret:", st.session_state.secret)
