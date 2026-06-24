@@ -25,11 +25,14 @@ Document at least 3 bugs you found. Add rows as needed.
 I used ChatGPT and the VS Code AI assistant during this project. One suggestion that seemed accurate involved the incorrect hint direction bug. The AI explained that the game might be comparing values as strings instead of numbers, which could cause the hint logic to behave incorrectly. I tested several guesses and noticed the game sometimes told me to go lower even when my guess was already below the secret number. The explanation helped me better understand how inconsistent data types can affect program behavior.
 
 One AI suggestion that turned out to be misleading happened while I was troubleshooting a Streamlit error. The AI suggested that a problematic line was still present in app.py, but when I checked that location, I couldn't find anything wrong. After digging deeper and using terminal commands to inspect the file, I discovered that the actual issue was a command that had accidentally been saved at the end of the script. That experience reminded me that AI can be helpful for troubleshooting, but its suggestions still need to be tested and verified.
+
 ---
 
 ## 3. Debugging and testing your fixes
 
-I tested the range validation fix manually in Streamlit. I switched the game to Easy mode, where the valid range is 1–20, and entered 25, 0, and 1000. Each one was rejected with the message “Guess must be between 1 and 20.” That showed me the game was finally checking the selected difficulty range instead of accepting every number I typed.
+I tested the range validation fix manually in Streamlit. I switched the game to Easy mode, where the valid range is 1–20, and entered 25, 0, and 1000. Each one was rejected with the message “Guess must be between 1 and 20.” That showed me the game was finally checking the selected difficulty range instead of accepting every number I typed. 
+
+Futhermore while testing the different difficulty levels, I noticed that the game was enforcing the correct number ranges behind the scenes, but the message shown to the player still said "Guess a number between 1 and 100" regardless of the selected difficulty. After reviewing the code, I updated the displayed range so it matches the active difficulty level. I verified the fix by switching between Easy, Normal, and Hard modes and confirming that both the displayed instructions and the input validation were using the same range.
 
 ---
 
