@@ -25,19 +25,34 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+Game Purpose
+
+The purpose of this project is to create a number guessing game where players attempt to guess a randomly generated secret number. The game provides hints to help guide the player, tracks attempts, and adjusts the valid guessing range based on the selected difficulty level.
+
+Bugs Found
+
+During testing, I discovered that the game accepted guesses that were outside the valid range for the selected difficulty. For example, when Easy mode was selected, the valid range was 1–20, but the game still accepted values such as 25, 0, and 1000. This created inconsistent gameplay because the difficulty limits were not being enforced.
+
+Fixes Applied
+
+To fix this issue, I refactored the parse_guess() logic into logic_utils.py and added range validation. The updated function now checks whether a guess falls within the active difficulty range before accepting it. If a player enters a value outside the allowed range, the game displays an error message instead of processing the guess.
+
+I also added a regression test in test_game_logic.py to verify that out-of-range guesses are rejected correctly. Finally, I tested the application in the browser by entering values such as 25, 0, and 1000 while using Easy mode and confirmed that the game displayed the message "Guess must be between 1 and 20."
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+The game is started on Easy difficulty, which sets the valid range to 1–20.
+The player enters a guess of 25.
+The game rejects the guess and displays the message: "Guess must be between 1 and 20."
+The player enters a guess of 0.
+The game again rejects the guess and displays the same range validation message.
+The player enters a valid guess within the allowed range.
+The game accepts the guess and provides the appropriate hint based on the secret number.
+Additional valid guesses continue to update the game normally.
+The player eventually guesses the correct number and wins the game.
+The game records the result and allows a new game to be started.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
