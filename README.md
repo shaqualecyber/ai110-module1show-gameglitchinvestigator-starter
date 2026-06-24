@@ -41,8 +41,6 @@ I also added a regression test in test_game_logic.py to verify that out-of-range
 
 ## 📸 Demo Walkthrough
 
-Describe your fixed game in numbered steps so a reader can follow along without watching a video:
-
 The game is started on Easy difficulty, which sets the valid range to 1–20.
 The player enters a guess of 25.
 The game rejects the guess and displays the message: "Guess must be between 1 and 20."
@@ -59,9 +57,8 @@ The game records the result and allows a new game to be started.
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+PYTHONPATH=. pytest -q
+3 passed in 0.02s
 ```
 
 ## 🚀 Stretch Features
